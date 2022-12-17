@@ -4,7 +4,7 @@
  * @module  App.jsx
  * @author Chen
  * @date 12.16.2022
- * @description 
+ * @description
  *
  * ************************************
  */
@@ -19,9 +19,9 @@ class App extends Component {
 
   render() {
     console.log(this.store);
-    return(
+    return (
       <div>
-        <MainContainer/>
+        <MainContainer />
       </div>
     );
   }
