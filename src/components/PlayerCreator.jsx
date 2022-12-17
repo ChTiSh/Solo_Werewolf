@@ -18,7 +18,7 @@ import React from 'react';
 
 
 const PlayerCreator = props => (
-    <div className="styles.gameNav">
+    <div className="gameNav">
         <div className="nameInput">
             <input id='name'></input>
             <button onClick ={() => props.addPlayer(document.getElementById('name').value)}>Join</button>
