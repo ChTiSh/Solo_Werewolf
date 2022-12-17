@@ -36,7 +36,6 @@
     return(
       <div className="displayBox">
         
-  
       {players}
   
       </div>
