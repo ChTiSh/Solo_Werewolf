@@ -24,7 +24,7 @@ const startVoting = props => {
 
 const StartVoting = props => (
     <div className='gameNav'>
-        <button name='startGame' disabled={startVoting ? false : true} onClick={e =>{e.currentTarget.disabled = true;}}>Start Game</button>
+        <button name='startGame' disabled={startVoting ? false : true} onClick={e =>{e.currentTarget.disabled = true;}}>Start Voting</button>
     </div>
 );
 

@@ -50,7 +50,10 @@ module.exports = {
             directory: path.join(__dirname, 'build'),
         },
         proxy: {
-            '/api': 'http://localhost:3000',
-        }
+            '/api': 'http://localhost:3000', 
+            
+        },
+        hot: true,
+        open: true
     },
 }
