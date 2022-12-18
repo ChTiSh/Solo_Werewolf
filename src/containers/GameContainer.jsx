@@ -61,6 +61,12 @@
             totalVotes={this.props.totalVotes}
             totalPlayer={this.props.totalPlayer}
             />
+
+            <StartVoting playerList={this.props.playerList}
+            gameRounds={this.props.gameRounds}
+
+            />
+            <StartGame playerList={this.props.playerList}/>
             <PlayersDisplay playerList={this.props.playerList}
             newName={this.props.newName}
             playerId={this.props.playerId}
@@ -69,11 +75,7 @@
             totalPlayer={this.props.totalPlayer}
 
             />
-            <StartVoting playerList={this.props.playerList}
-            gameRounds={this.props.gameRounds}
-
-            />
-            <StartGame playerList={this.props.playerList}/>
+ 
         </div>
       )
    }

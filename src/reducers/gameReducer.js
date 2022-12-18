@@ -40,7 +40,8 @@ const gameReducer = (state = initialState, action) => {
             const playerId = state.playerId + 1;
             const totalPlayers = state.totalPlayers + 1;
             const playerName = action.payload;
-            const randomNum= Math.floor(Math.random() * 10);
+            //picking one random no based on how many identity left in the last
+            const randomNum= Math.floor(Math.random() * state.playerIdentityList.length);
 
             //randomly assign one identity to the player
             const playerChar = state.playerIdentityList[randomNum];

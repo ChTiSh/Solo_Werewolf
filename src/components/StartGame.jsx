@@ -14,6 +14,7 @@ import React from 'react';
 // this button will stop working once clicked
 
 const missingPlayers = props => {
+    console.log('playerlist length',props.playerList.length);
     if(props.playerList.length === 10){
         missingPlayers = false;
     } else {
