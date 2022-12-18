@@ -41,12 +41,16 @@ const gameReducer = (state = initialState, action) => {
             const totalPlayers = state.totalPlayers + 1;
             const playerName = action.payload;
             const randomNum= Math.floor(Math.random() * 10);
+
+            //randomly assign one identity to the player
             const playerChar = state.playerIdentityList[randomNum];
             console.log('playerIdentity', playerChar)
             console.log('reducer addplayer payload', action.payload);
-            console.log('playerIdentityList', state.playerIdentityList.slice())
-            
+            console.log('randomNo', randomNum);
+            //console.log('playerIdentityList', state.playerIdentityList.splice(randomNum,1));
+            console.log('playerIdentityList', state.playerIdentityList);
 
+            // add the new player to player list
             const newPlayer = {
                 playerId: state.playerId,
                 name: action.payload,
@@ -54,10 +58,10 @@ const gameReducer = (state = initialState, action) => {
 
             }
             //make a copy
-            playerIdentityListDeleted = state.playerIdentityList.slice();
+            let playerIdentityListDeleted = state.playerIdentityList.slice();
             //remove from the list
             playerIdentityListDeleted.splice(randomNum,1);
-            console.log('playerIdentityList', playerIdentityListDeleted)
+            console.log('playerIdentityListDeleted', playerIdentityListDeleted)
             
             //make a copy
             playerList = state.playerList.slice();
@@ -70,7 +74,7 @@ const gameReducer = (state = initialState, action) => {
                 playerId,
                 totalPlayers,
                 playerName,
-                playerIdentity,
+                playerIdentity:'',
                 playerIdentityList:playerIdentityListDeleted,
             };
         }
