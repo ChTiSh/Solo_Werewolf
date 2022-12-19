@@ -17,14 +17,38 @@
 import React from 'react';
 
 
-const PlayerCreator = props => (
-    <div className="gameNav">
-        <div className="nameInput">
-            <input id='name'></input>
-            <button onClick ={() => props.addPlayer(document.getElementById('name').value)}>Join</button>
-        </div>
+let disable = false;
+const PlayerCreator = props => {
+    
+    
+    let display;
+    const enoughPlayer = ()=>{
+        console.log('playList length', props.playerList.length);
+        if(props.playerList.length >= 9){
+           disable = true;
+        } 
+        console.log(disable);
+    }
 
-    </div>
-);
+    // after each click of join, a post request should be sent to the server 
+    // to generate the session id/cookie to identify each player
+    function handleClick() {
+        props.addPlayer(document.getElementById('name').value);
+        enoughPlayer();
+    }
+  
+    
+    return (
+        <div className="gameNav">
+            <div className="nameInput">
+                <input id='name' ></input>
+                <button onClick ={handleClick} disabled={disable? true : false}>Join</button>
+            </div>
+
+        </div>
+    )
+}
 
 export default PlayerCreator;
+
+//<button onClick ={() => props.addPlayer(document.getElementById('name').value)} disabled={disable}>Join</button>

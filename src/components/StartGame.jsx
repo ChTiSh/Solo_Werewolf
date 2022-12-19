@@ -4,6 +4,10 @@
  * StartGame
  * 
  * The button to start the game after the 10player joined the game
+ * 
+ * The button will trigger a get reqeuest to the database for
+ * 
+ * players' identity, players status
  *
  * ************************************
  */

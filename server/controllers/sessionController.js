@@ -1,5 +1,15 @@
-const db = require('../models/werewolfModels');
+/**
+ * ************************************
+ *
+ * @module  sessionController
+ * @author
+ * @date
+ * @description 
+ *
+ * ************************************
+ */
 
+const db = require('../models/werewolfModels');
 const sessionController = {};
 
 /**

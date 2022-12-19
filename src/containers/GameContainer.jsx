@@ -27,6 +27,7 @@
       totalPlayer: state.game.totalPlayer,
       gameRounds: state.game.gameRounds,
       totalVotes: state.game.totalVotes,
+      playerIdentity: state.game.playerIdentity,
     };
   };
 
@@ -60,6 +61,7 @@
             addVotes={this.props.addVotes}
             totalVotes={this.props.totalVotes}
             totalPlayer={this.props.totalPlayer}
+            playerIdentity={this.props.playerIdentity}
             />
 
             <StartVoting playerList={this.props.playerList}
@@ -73,6 +75,7 @@
             addVotes={this.props.addVotes}
             totalVotes={this.props.totalVotes}
             totalPlayer={this.props.totalPlayer}
+            playerIdentity={this.props.playerIdentity}
 
             />
  

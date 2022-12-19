@@ -21,7 +21,8 @@
         totalPlayers: state.game.totalPlayers,
         totalHumans: state.game.totalHumans,
         gameId: state.game.gameId,
-        totalVotes: state.game.totalVotes
+        totalVotes: state.game.totalVotes,
+        playerIdentity: state.game.playerIdentity,
     }
  }
 
