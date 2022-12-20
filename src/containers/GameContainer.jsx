@@ -57,7 +57,7 @@
     render() {
       return(
         <div className='innerbox'>
-          
+
             <StartGame gameStatus={this.props.gameStatus}
                     addVotes={this.props.addVotes}
                     totalVotes={this.props.totalVotes}
@@ -90,6 +90,7 @@
                             totalVotes={this.props.totalVotes}
                             totalPlayer={this.props.totalPlayer}
                             playerIdentity={this.props.playerIdentity}
+                            gameStatus={this.props.gameStatus}
 
             />
  
