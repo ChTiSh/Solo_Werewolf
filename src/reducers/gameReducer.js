@@ -27,6 +27,7 @@ const initialState = {
     playerName: '',
     gameId:10000,
     gameStatus: '',
+    voteStatus: true,
     playerIdentityList:['wolf','wolf','wolf','villager', 'villager', 'villager','villager','doctor','seer','hunter'],
     playerIdentity:'',
 }
@@ -104,7 +105,6 @@ const gameReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                playerList,
                 totalVotes,
             };
         }
@@ -115,6 +115,15 @@ const gameReducer = (state = initialState, action) => {
             return {
                 ...state,
                 gameStatus
+            }
+        }
+
+        case types.START_VOTING: {
+            let voteStatus = action.payload;
+            console.log("gameStatus", voteStatus);
+            return {
+                ...state,
+                voteStatus
             }
         }
 

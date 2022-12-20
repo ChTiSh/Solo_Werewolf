@@ -24,6 +24,8 @@
         gameId: state.game.gameId,
         totalVotes: state.game.totalVotes,
         playerIdentity: state.game.playerIdentity,
+        voteStatus: state.game.voteStatus,
+        
     }
  }
 

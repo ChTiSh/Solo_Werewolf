@@ -30,6 +30,7 @@
       totalVotes: state.game.totalVotes,
       playerIdentity: state.game.playerIdentity,
       gameStatus:state.game.gameStatus,
+      voteStatus: state.game.voteStatus,
     };
   };
 
@@ -44,7 +45,9 @@
     },
     startGame:(gameStatus) => {
       dispatch(actions.startGameActionCreator(gameStatus))
-
+    },
+    startVoting:(voteStatus)=> {
+      dispatch(actions.startVotingActionCreator(voteStatus));
     }
  });
 
@@ -65,6 +68,7 @@
                     playerList={this.props.playerList}
                     playerId={this.props.playerId}
                     startGame={this.props.startGame}
+                    voteStatus={this.props.voteStatus}
             />
             <PlayerCreator playerList={this.props.playerList}
                     newName={this.props.newName}
@@ -75,6 +79,7 @@
                     totalPlayer={this.props.totalPlayer}
                     playerIdentity={this.props.playerIdentity}
                     startGame={this.props.startGame}
+                    voteStatus={this.props.voteStatus}
             />
             
 
@@ -83,6 +88,10 @@
                           totalVotes={this.props.totalVotes}
                           gameStatus={this.props.gameStatus}
                           addVotes={this.props.addVotes}
+                          voteStatus={this.props.voteStatus}
+                          playerId={this.props.playerId}
+                          startVoting={this.props.startVoting}
+                          
 
             />
             <PlayersDisplay playerList={this.props.playerList}
@@ -93,6 +102,8 @@
                             totalPlayer={this.props.totalPlayer}
                             playerIdentity={this.props.playerIdentity}
                             gameStatus={this.props.gameStatus}
+                            voteStatus={this.props.voteStatus}
+                            startVoting={this.props.startVoting}
 
             />
  

@@ -16,3 +16,5 @@
  export const ADD_VOTES = "ADD_VOTES";
 
  export const START_GAME = "START_GAME";
+
+ export const START_VOTING = "START_VOTING";

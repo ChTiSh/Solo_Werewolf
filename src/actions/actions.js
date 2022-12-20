@@ -33,3 +33,8 @@ export const startGameActionCreator = gameStatus => ({
   type: types.START_GAME,
   payload: gameStatus,
 });
+
+export const startVotingActionCreator = voteStatus => ({
+  type: types.START_VOTING,
+  payload: voteStatus,
+});

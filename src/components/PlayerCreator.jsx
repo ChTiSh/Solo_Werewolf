@@ -47,6 +47,7 @@ const PlayerCreator = props => {
         setDisable(true)
         enoughPlayer();
         notEmpty();
+    
     }
     return (
         <div className="gameNav">

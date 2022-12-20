@@ -19,6 +19,8 @@ import React, { useState, useEffect }  from 'react';
  //<button name='next' onClick={e => {props.restartTimer(e.target.name)}}>Next</button>
  const Player = props => {
     // to check the player status and game status
+    let [disable, setDisable] = useState(false);
+
     function enableVoting(){
         if(props.gameStatus === 'start'){
             //select all the players with wolf identity and enable them to vote
@@ -28,6 +30,7 @@ import React, { useState, useEffect }  from 'react';
 
     function afterVote(e){
         console.log('voting');
+        console.log(props.playerList);
         e.currentTarget.disabled = false;
         //send the vote out
         props.addVotes(document.getElementsByClassName('player').id)
@@ -39,17 +42,14 @@ import React, { useState, useEffect }  from 'react';
         }
     }
 
-    let [disable, setDisable] = useState(true);
-    useEffect(()=>{
-
-    })
+    
     
     //userEffect
     return (
         <div className="playerBox">
             <h4>Player No. : {props.player.playerId + 1}</h4>
             <h4>{props.player.playerIdentity}</h4>
-            <button id={props.player.playerId} className="player" disabled={disable} onClick={afterVote}>{props.player.name}</button>
+            <button id={props.player.playerId} className="player" disabled={props.voteStatus} onClick={afterVote}>{props.player.name}</button>
         </div>
 
     );
