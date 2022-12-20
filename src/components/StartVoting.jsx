@@ -22,11 +22,19 @@ const startVoting = props => {
 //the button will be disabled until 10 votes are in
 //after 10 votes are in, game prompts will start again, start voting button will be enable
 
-const StartVoting = props => (
-    <div className='gameNav'>
-        <button name='startGame' disabled={startVoting ? false : true} onClick={e =>{e.currentTarget.disabled = true;}}>Start Voting</button>
-    </div>
-);
+const StartVoting = props => {
+    function enoughVotes(){
+        if(props.totalVotes >=10){
+            enoughVotes = true;
+        }
+    }
+
+    return(
+        <div className='gameNav'>
+            <button name='startVoting' disabled={enoughVotes ? true : false} onClick={e =>{e.currentTarget.disabled = true;}}>Start Voting</button>
+        </div>
+    );
+}
 
 
 export default StartVoting;

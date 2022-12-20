@@ -11,6 +11,7 @@
  import { connect } from 'react-redux';
  import GameContainer from './GameContainer.jsx';
 
+
  const mapStateToProps = state => {
     //mapping state
     return {
@@ -48,7 +49,7 @@
             <div className='container'>
                 <div className='outerBox'>
                     <h1>Werewolf Game</h1>
-                    <h4>Game prompts display here</h4>
+                    
                     <GameContainer />
                 </div>
             </div>

@@ -19,7 +19,7 @@
     <div className="playerBox">
         <h4>Player No. : {props.player.playerId + 1}</h4>
         <h4>{props.player.playerIdentity}</h4>
-        <button name={props.player.name} disabled={true} onClick = {e => {props.addVotes(e.target.name)}}>Vote for {props.player.name}</button>
+        <button name={props.player.name} disabled={true} onClick = {e => {props.addVotes(e.target.name)}}>{props.player.name}</button>
     </div>
 
  );

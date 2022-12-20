@@ -15,8 +15,8 @@ import * as types from "../constants/actionTypes";
 
 const initialState = {
     totalPlayers: 0,
-    totalWolves: 0,
-    totalHumans: 0,
+    totalWolves: [],
+    totalHumans: [],
     gameRounds: 0,
     totalVotes: 0,
     seerSkill: false,
@@ -51,6 +51,7 @@ const gameReducer = (state = initialState, action) => {
             //console.log('playerIdentityList', state.playerIdentityList.splice(randomNum,1));
             console.log('playerIdentityList', state.playerIdentityList);
 
+
             // add the new player to player list
             const newPlayer = {
                 playerId: state.playerId,
@@ -69,10 +70,25 @@ const gameReducer = (state = initialState, action) => {
             //add to the list
             playerList.push(newPlayer);
 
+            //check the player identity and add to the total number accordingly
+            let totalWolves = state.totalWolves.slice();
+            if(playerChar ==='wolf'){
+                totalWolves.push(newPlayer);
+                console.log('total wolves', totalWolves)
+            }
+
+            let totalHumans = state.totalHumans.slice();
+            if(playerChar ==='villager' || playerChar ==='seer' || 
+               playerChar ==='hunter' || playerChar ==='doctor' ){
+                totalHumans.push(newPlayer);
+            }
+
             return {
                 ...state,
                 playerList,
                 playerId,
+                totalHumans,
+                totalWolves,
                 totalPlayers,
                 playerName,
                 playerIdentity:'',
@@ -81,13 +97,22 @@ const gameReducer = (state = initialState, action) => {
         }
 
         case types.ADD_VOTES:{
-            let totalVotes = state.totalVotes;
+            let totalVotes = state.totalVotes+1;
 
             return {
                 ...state,
                 playerList,
                 totalVotes,
             };
+        }
+
+        case types.START_GAME: {
+            let gameStatus = action.payload;
+            console.log(gameStatus);
+            return {
+                ...state,
+                gameStatus
+            }
         }
 
         case types.DELETE_PLAYER:{

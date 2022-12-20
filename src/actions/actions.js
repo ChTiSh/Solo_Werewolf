@@ -28,3 +28,8 @@ export const addVotesActionCreator = playerId => ({
   type: types.ADD_VOTES,
   payload: playerId,
 });
+
+export const startGameActionCreator = gameStatus => ({
+  type: types.START_GAME,
+  payload: gameStatus,
+});

@@ -19,6 +19,7 @@
  import StartVoting from '../components/StartVoting.jsx';
 
 
+
  const mapStateToProps = state => {
     // provide pertinent state here
     console.log(state);
@@ -28,6 +29,7 @@
       gameRounds: state.game.gameRounds,
       totalVotes: state.game.totalVotes,
       playerIdentity: state.game.playerIdentity,
+      gameStatus:state.game.gameStatus,
     };
   };
 
@@ -35,14 +37,15 @@
  const mapDispatchToProps = (dispatch)=> ({
     //add a new player on submit
     addPlayer:(name)=> {
-        dispatch(actions.addPlayerActionCreator(name));
+      dispatch(actions.addPlayerActionCreator(name));
     },
     addVotes:(playerId)=> {
-        dispatch(actions.addVotesActionCreator(playerId))
-    }
-    // startGame:() => {
+      dispatch(actions.addVotesActionCreator(playerId))
+    },
+    startGame:(gameStatus) => {
+      dispatch(actions.startGameActionCreator(gameStatus))
 
-    // }
+    }
  });
 
  class GameContainer extends Component {
@@ -54,28 +57,38 @@
     render() {
       return(
         <div className='innerbox'>
+            <h4>Game prompts display here</h4>
             <PlayerCreator playerList={this.props.playerList}
-            newName={this.props.newName}
-            playerId={this.props.playerId}
-            addPlayer={this.props.addPlayer}
-            addVotes={this.props.addVotes}
-            totalVotes={this.props.totalVotes}
-            totalPlayer={this.props.totalPlayer}
-            playerIdentity={this.props.playerIdentity}
+                    newName={this.props.newName}
+                    playerId={this.props.playerId}
+                    addPlayer={this.props.addPlayer}
+                    addVotes={this.props.addVotes}
+                    totalVotes={this.props.totalVotes}
+                    totalPlayer={this.props.totalPlayer}
+                    playerIdentity={this.props.playerIdentity}
+                    startGame={this.props.startGame}
+            />
+            <StartGame gameStatus={this.props.gameStatus}
+                    addVotes={this.props.addVotes}
+                    totalVotes={this.props.totalVotes}
+                    playerIdentity={this.props.playerIdentity}
+                    playerList={this.props.playerList}
+                    playerId={this.props.playerId}
+                    startGame={this.props.startGame}
             />
 
             <StartVoting playerList={this.props.playerList}
-            gameRounds={this.props.gameRounds}
+                          gameRounds={this.props.gameRounds}
+                          totalVotes={this.props.totalVotes}
 
             />
-            <StartGame playerList={this.props.playerList}/>
             <PlayersDisplay playerList={this.props.playerList}
-            newName={this.props.newName}
-            playerId={this.props.playerId}
-            addVotes={this.props.addVotes}
-            totalVotes={this.props.totalVotes}
-            totalPlayer={this.props.totalPlayer}
-            playerIdentity={this.props.playerIdentity}
+                            newName={this.props.newName}
+                            playerId={this.props.playerId}
+                            addVotes={this.props.addVotes}
+                            totalVotes={this.props.totalVotes}
+                            totalPlayer={this.props.totalPlayer}
+                            playerIdentity={this.props.playerIdentity}
 
             />
  
