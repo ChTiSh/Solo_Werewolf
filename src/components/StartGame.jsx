@@ -18,27 +18,51 @@ import React, {useEffect, userEffect, useState} from 'react';
 // this button will only work after the 10th player joine the game
 // this button will stop working once clicked
 let werewolfPrompts = [
+    <h4></h4>,
     <h4>It's night time, all players please close your eyes</h4>,
     <h4>Werewolves, open your eyes</h4>,
     <h4>Werewolves, pick someone to kill</h4>,
     <h4>Werewolves, pick someone to kill</h4>,
     <h4>Werewolves, pick someone to kill</h4>,
-    <h4>"Werewolves, close your eyes now"</h4>
+    <h4>Werewolves, pick someone to kill</h4>,
+    <h4>Werewolves, pick someone to kill</h4>,
+    <h4>Werewolves, close your eyes now</h4>
+]
+
+let seerPrompts =[
+    <h4>Seer, open your eyes.</h4>,
+    <h4>Seer, pick someone to ask about.</h4>,
+    <h4>vote to check, get the result back</h4>,
+    <h4>Seer, close your eyes</h4>,
 ]
 
 
 const StartGame = props => {
-    let [promptNum, setPrompt] = useState(0)
-    
-        console.log(promptNum)
-        useEffect(()=>{
-            //if(props.gameStatus === 'start'){
-                const myInterval = setInterval(()=>{
-                    setPrompt(promptNum + 1);
-                }, 2000);
-                return () => clearInterval(myInterval);
-           //}
-        }, []);
+    let [currentWolfPrompt, setWolfPrompt] = useState(0)
+    let [currentSeerPrompt, setSeerPrompt] = useState(0)
+
+    function incrementPrompt () {
+        if(props.gameStatus === 'start'){
+            setWolfPrompt((currentWolfPrompt) => currentWolfPrompt + 1)
+            console.log('currentWolfPrompt', currentWolfPrompt);
+            if(currentWolfPrompt === 7){
+
+            }
+        }
+        //if wolves finished voting
+        if(props.gameStatus === 'seer'){
+            setSeerPrompt((currentSeerPrompt) => currentSeerPrompt + 1);
+            console.log(currentSeerPrompt);
+        }
+    }
+
+    useEffect(()=>{
+        const myInterval = setInterval(()=>{
+            incrementPrompt()
+        }, 2000);
+        return () => clearInterval(myInterval);
+        //props here trigger useEffect each time there is a change
+    }, [props.gameStatus]);
     
 
     function startGame(e){
@@ -46,39 +70,6 @@ const StartGame = props => {
         if(props.playerList.length === 10){
             props.startGame('start');
         }
-    }
-
-    let Narrator = [<h4>Players, welcome to the game</h4>];
-    let prompt;
-    
-    
-    const Werewolf =(Narrator)=> {
-        //check if the game start, game start true : false
-        if(props.gameStatus === 'start'){
-            //for loop to go through with setTimeout()
-            for(let i = 0; i < werewolfPrompts.length; i++){
-                //change the prompt every 2 seconds
-                setInterval(() => {
-                    prompt = werewolfPrompts[i];
-                    console.log('prompt',prompt)
-                }, 2000);
-            }
-        }
-        
-            // "It's night time, all players please close your eyes"
-            // "Werewolves, open your eyes"
-            // "Werewolves, pick someone to kill"
-            // vote to kill, send the results out
-            // "Werewolves, close your eyes"
-
-    }
-
-    function Seer (){
-        //if wolves finished voting
-            // “Seer, open your eyes.
-            // "Seer, pick someone to ask about."
-            // vote to check, get the result back
-            // "Seer, close your eyes"
     }
 
     function Doctor(){
@@ -96,10 +87,10 @@ const StartGame = props => {
     }
 
     return (
-
         <div className="startGame">
-            <p>{promptNum}</p>
-            <button name='start' onClick={startGame}>Start Game</button>
+            {werewolfPrompts[currentWolfPrompt]}
+            {seerPrompts[currentSeerPrompt]}
+            <button name='start' onClick={startGame} disabled={props.playerList.length !==10}>Start Game</button>
         </div>
     );
 }

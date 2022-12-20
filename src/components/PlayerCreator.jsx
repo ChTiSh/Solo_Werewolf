@@ -32,14 +32,10 @@ const PlayerCreator = props => {
 
     // after each click of join, a post request should be sent to the server 
     // to generate the session id/cookie to identify each player
-    function handleClick() {
-        //check if the input is empty
+    const handleClick = () => {
         props.addPlayer(document.getElementById('name').value);
         enoughPlayer();
-        // a post request should be sent each player joins
     }
-
-    
     return (
         <div className="gameNav">
             <div className="nameInput">

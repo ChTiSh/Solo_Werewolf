@@ -108,7 +108,7 @@ const gameReducer = (state = initialState, action) => {
 
         case types.START_GAME: {
             let gameStatus = action.payload;
-            console.log(gameStatus);
+            console.log("gameStatus", gameStatus);
             return {
                 ...state,
                 gameStatus

@@ -57,7 +57,15 @@
     render() {
       return(
         <div className='innerbox'>
-            <h4>Game prompts display here</h4>
+          
+            <StartGame gameStatus={this.props.gameStatus}
+                    addVotes={this.props.addVotes}
+                    totalVotes={this.props.totalVotes}
+                    playerIdentity={this.props.playerIdentity}
+                    playerList={this.props.playerList}
+                    playerId={this.props.playerId}
+                    startGame={this.props.startGame}
+            />
             <PlayerCreator playerList={this.props.playerList}
                     newName={this.props.newName}
                     playerId={this.props.playerId}
@@ -68,14 +76,7 @@
                     playerIdentity={this.props.playerIdentity}
                     startGame={this.props.startGame}
             />
-            <StartGame gameStatus={this.props.gameStatus}
-                    addVotes={this.props.addVotes}
-                    totalVotes={this.props.totalVotes}
-                    playerIdentity={this.props.playerIdentity}
-                    playerList={this.props.playerList}
-                    playerId={this.props.playerId}
-                    startGame={this.props.startGame}
-            />
+            
 
             <StartVoting playerList={this.props.playerList}
                           gameRounds={this.props.gameRounds}
