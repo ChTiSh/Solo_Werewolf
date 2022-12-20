@@ -14,34 +14,47 @@
  *  market data: key: Name, values: identity, life, skill
  * 
  */
-import React from 'react';
+import React,{useState} from 'react';
 
 
-let disable = false;
+//let disable = true;
 
 
 const PlayerCreator = props => {
+    const [disable, setDisable] = useState(true);
+    function notEmpty(){
+        
+        if(document.getElementById('name').value){
+            console.log(document.getElementById('name').value)
+            setDisable(false);
+        }
+    }
     
     const enoughPlayer = ()=>{
         console.log('playList length', props.playerList.length);
         if(props.playerList.length >= 9){
-           disable = true;
+           setDisable(true);
+           document.getElementById('name').style.visibility = "hidden";
+           document.getElementById('join').style.visibility = "hidden";
         } 
-        
     }
 
     // after each click of join, a post request should be sent to the server 
     // to generate the session id/cookie to identify each player
     const handleClick = () => {
         props.addPlayer(document.getElementById('name').value);
+        document.getElementById('name').value = '';
+        setDisable(true)
         enoughPlayer();
+        notEmpty();
     }
     return (
         <div className="gameNav">
-            <div className="nameInput">
-                <input id='name' ></input>
-                <button onClick ={handleClick} disabled={disable? true : false}>Join</button>
+            <div className="nameInput" display="block">
+                <input id='name' onChange={notEmpty}/>
+                <button id='join' onClick ={handleClick} disabled={disable? true : false}>Join</button>
             </div>
+
         </div>
     )
 }

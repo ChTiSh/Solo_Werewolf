@@ -10,28 +10,27 @@
 
 import React from 'react';
 
-//start voting button should work after each round's prompt
-const startVoting = props => {
-    if(props.newRound === true){
-        startVoting = true;
-    } else {
-        startVoting = false;
-    }
-}
 
 //the button will be disabled until 10 votes are in
 //after 10 votes are in, game prompts will start again, start voting button will be enable
-
+let votingTime = false;
 const StartVoting = props => {
-    function enoughVotes(){
-        if(props.totalVotes >=10){
-            enoughVotes = true;
+    
+    //after clicked start voting, all players voting buttons will be enabled
+    function afterClicked (e){
+        e.currentTarget.disabled = true;
+        const buttons = document.getElementsByClassName("player");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].disabled=false;
         }
+        
     }
+
+    //the button should only be enabled during certain gameStatus
 
     return(
         <div className='gameNav'>
-            <button name='startVoting' disabled={enoughVotes ? true : false} onClick={e =>{e.currentTarget.disabled = true;}}>Start Voting</button>
+            <button name='startVoting' disabled={props.gameStatus !== 'start'} onClick={afterClicked}>Start Voting</button>
         </div>
     );
 }

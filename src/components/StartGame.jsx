@@ -30,6 +30,7 @@ let werewolfPrompts = [
 ]
 
 let seerPrompts =[
+    <h4></h4>,
     <h4>Seer, open your eyes.</h4>,
     <h4>Seer, pick someone to ask about.</h4>,
     <h4>vote to check, get the result back</h4>,
@@ -42,7 +43,7 @@ const StartGame = props => {
     let [currentSeerPrompt, setSeerPrompt] = useState(0)
 
     function incrementPrompt () {
-        if(props.gameStatus === 'start'){
+        if(props.gameStatus === 'start' && currentWolfPrompt < 10){
             setWolfPrompt((currentWolfPrompt) => currentWolfPrompt + 1)
             console.log('currentWolfPrompt', currentWolfPrompt);
             if(currentWolfPrompt === 7){
@@ -52,7 +53,7 @@ const StartGame = props => {
         //if wolves finished voting
         if(props.gameStatus === 'seer'){
             setSeerPrompt((currentSeerPrompt) => currentSeerPrompt + 1);
-            console.log(currentSeerPrompt);
+            console.log('currentSeerPrompt', currentSeerPrompt);
         }
     }
 
@@ -63,7 +64,6 @@ const StartGame = props => {
         return () => clearInterval(myInterval);
         //props here trigger useEffect each time there is a change
     }, [props.gameStatus]);
-    
 
     function startGame(e){
         console.log('playerlist length',props.playerList.length);

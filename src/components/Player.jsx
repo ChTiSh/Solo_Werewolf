@@ -10,7 +10,8 @@
  */
 
 
-import React, {useEffect} from 'react';
+import React, { useState, useEffect }  from 'react';
+
 
  //display player No. ,player name
 
@@ -20,29 +21,39 @@ import React, {useEffect} from 'react';
     // to check the player status and game status
     function enableVoting(){
         if(props.gameStatus === 'start'){
-            //select all the buttons with wolf identity and enable them
-            const buttons = document.getElementsByClassName("wolf");
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].disabled=false;
-            }
+            //select all the players with wolf identity and enable them to vote
+            
         }
     }
 
     function afterVote(e){
-        //disable the button after voting
-        e.currentTarget.disabled = true;
+        console.log('voting');
+        e.currentTarget.disabled = false;
         //send the vote out
-        props.addVotes(e.target.playerId)
+        props.addVotes(document.getElementsByClassName('player').id)
+        //disable the button after voting        
+
+        //if total votes are equal to the current player numbers, game status wil be changed to start again
+        if(props.totalVotes >= props.playerList.length){
+            props.gameStatus = 'start';
+        }
     }
 
+    let [disable, setDisable] = useState(true);
+    useEffect(()=>{
+
+    })
+    
     //userEffect
     return (
         <div className="playerBox">
             <h4>Player No. : {props.player.playerId + 1}</h4>
             <h4>{props.player.playerIdentity}</h4>
-            <button playerid={props.player.playerId} className={props.player.playerIdentity} disabled={enableVoting} onClick ={afterVote}>{props.player.name}</button>
+            <button id={props.player.playerId} className="player" disabled={disable} onClick={afterVote}>{props.player.name}</button>
         </div>
 
     );
 }
  export default Player;
+
+

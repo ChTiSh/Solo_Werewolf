@@ -98,6 +98,9 @@ const gameReducer = (state = initialState, action) => {
 
         case types.ADD_VOTES:{
             let totalVotes = state.totalVotes+1;
+            //playerId will be received as action payload
+            console.log('totalVotes',totalVotes);
+
 
             return {
                 ...state,

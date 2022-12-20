@@ -81,6 +81,8 @@
             <StartVoting playerList={this.props.playerList}
                           gameRounds={this.props.gameRounds}
                           totalVotes={this.props.totalVotes}
+                          gameStatus={this.props.gameStatus}
+                          addVotes={this.props.addVotes}
 
             />
             <PlayersDisplay playerList={this.props.playerList}
