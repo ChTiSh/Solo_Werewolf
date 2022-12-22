@@ -14,7 +14,7 @@
  *  market data: key: Name, values: identity, life, skill
  * 
  */
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 
 
 //let disable = true;
@@ -22,6 +22,9 @@ import React,{useState} from 'react';
 
 const PlayerCreator = props => {
     const [disable, setDisable] = useState(true);
+    //const [playerId,setplayerId ] = useState(0);
+    
+    
     function notEmpty(){
         
         if(document.getElementById('name').value){
@@ -38,11 +41,54 @@ const PlayerCreator = props => {
            document.getElementById('join').style.visibility = "hidden";
         } 
     }
-
+    
+    // function setCookie(cName, cValue, expD) {
+    //         let date = new Date();
+    //         date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+    //         document.cookie = cName + "=" + cValue + "; ";
+    // }
+    // Apply setCookie
+    
+    const createPlayer =() =>{
+        /***
+         *  "player_id" smallint NOT NULL PRIMARY KEY,
+            "name" varchar NOT NULL,
+            "identity" varchar NOT NULL,
+            "cookie_id" varchar NOT NULL,
+            "life_status" varchar NOT NULL,
+            "game_id" bigint NOT NULL
+         */
+        
+        const body = {
+            player_id: props.playerId,
+            name: document.getElementById('name').value, 
+            cookie_id: 'testingwithname',
+            life_status: "live",
+            game_id: props.gameId,
+        }
+        //fetch post cookie data into database
+       
+        fetch('http://localhost:3000/api/player', {
+            method: 'POST',
+            //mode:'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body),
+        })
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch(err => console.log('Addplayer fetch /: ERROR: ', err));
+      
+    }
+    
     // after each click of join, a post request should be sent to the server 
     // to generate the session id/cookie to identify each player
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log('playerId 1:',playerId);
         props.addPlayer(document.getElementById('name').value);
+        createPlayer(playerId);
         document.getElementById('name').value = '';
         setDisable(true)
         enoughPlayer();
@@ -50,10 +96,10 @@ const PlayerCreator = props => {
     
     }
     return (
-        <div className="gameNav">
+        <div className="playerCreator">
             <div className="nameInput" display="block">
-                <input id='name' onChange={notEmpty}/>
-                <button id='join' onClick ={handleClick} disabled={disable? true : false}>Join</button>
+                <input id='name' placeholder="name" onChange={notEmpty}/>
+                <button id='join' name={props.playerId} onClick ={handleClick} disabled={disable? true : false}>Join</button>
             </div>
 
         </div>

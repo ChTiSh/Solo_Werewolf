@@ -53,14 +53,25 @@ module.exports = {
     new ProgressPlugin(),
   ],
   devServer: {
+    port: 8080,
     static: {
       publicPath: '/build',
       directory: path.join(__dirname, 'build'),
     },
     historyApiFallback: true,
     host: 'localhost',
+    hot: true,
+    liveReload: false,
+    compress: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
     },
     hot: true,
     open: true,

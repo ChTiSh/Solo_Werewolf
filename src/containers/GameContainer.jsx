@@ -31,6 +31,8 @@
       playerIdentity: state.game.playerIdentity,
       gameStatus:state.game.gameStatus,
       voteStatus: state.game.voteStatus,
+      gameId:state.game.gameId,
+      playerId:state.game.playerId,
     };
   };
 
@@ -53,23 +55,13 @@
 
  class GameContainer extends Component {
     constructor(props) {
-        super(props);
-      }
+      super(props);
+    }
     
 
     render() {
       return(
         <div className='innerbox'>
-
-            <StartGame gameStatus={this.props.gameStatus}
-                    addVotes={this.props.addVotes}
-                    totalVotes={this.props.totalVotes}
-                    playerIdentity={this.props.playerIdentity}
-                    playerList={this.props.playerList}
-                    playerId={this.props.playerId}
-                    startGame={this.props.startGame}
-                    voteStatus={this.props.voteStatus}
-            />
             <PlayerCreator playerList={this.props.playerList}
                     newName={this.props.newName}
                     playerId={this.props.playerId}
@@ -80,8 +72,19 @@
                     playerIdentity={this.props.playerIdentity}
                     startGame={this.props.startGame}
                     voteStatus={this.props.voteStatus}
+                    startVoting={this.props.startVoting}
+                    gameId={this.props.gameId}
             />
-            
+
+            <StartGame gameStatus={this.props.gameStatus}
+                    addVotes={this.props.addVotes}
+                    totalVotes={this.props.totalVotes}
+                    playerIdentity={this.props.playerIdentity}
+                    playerList={this.props.playerList}
+                    playerId={this.props.playerId}
+                    startGame={this.props.startGame}
+                    voteStatus={this.props.voteStatus}
+            />
 
             <StartVoting playerList={this.props.playerList}
                           gameRounds={this.props.gameRounds}

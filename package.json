@@ -15,6 +15,7 @@
     "url": "git+https://github.com/ChTiSh/Solo_Werewolf.git"
   },
   "keywords": [],
+  "proxy": "http://localhost:3000/",
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -23,7 +24,9 @@
   "homepage": "https://github.com/ChTiSh/Solo_Werewolf#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
+    "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "express": "^4.18.2",
     "html-webpack-plugin": "^5.5.0",

@@ -25,7 +25,7 @@ const initialState = {
     playerList: [],
     playerId: 0,
     playerName: '',
-    gameId:10000,
+    gameId: Math.floor(Math.random() * 1000000000000),
     gameStatus: '',
     voteStatus: true,
     playerIdentityList:['wolf','wolf','wolf','villager', 'villager', 'villager','villager','doctor','seer','hunter'],
@@ -83,6 +83,27 @@ const gameReducer = (state = initialState, action) => {
                playerChar ==='hunter' || playerChar ==='doctor' ){
                 totalHumans.push(newPlayer);
             }
+
+            const body = {
+                player_id: 0,
+                name: document.getElementById('name').value, 
+                cookie_id: 'testingwithname',
+                life_status: "live",
+                game_id: 10000,
+            }
+            //fetch post cookie data into database
+           
+            fetch('http://localhost:3000/api/player', {
+                method: 'POST',
+                mode:'no-cors',
+                headers: {'Content-Type': 'Application/JSON'},
+                body: JSON.stringify(body),
+            })
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(err => console.log('Addplayer fetch /: ERROR: ', err));
 
             return {
                 ...state,

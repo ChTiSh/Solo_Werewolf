@@ -16,7 +16,7 @@
 
     // we need a loop (map?) to display all the markets 
     const {addPlayer, playerList, deletePlayer, totalPlayers, playerIdentity, 
-           gameStatus, addVotes, playerId, voteStatus} = props;
+           gameStatus, addVotes, playerId, voteStatus, startVoting} = props;
   
     const players = [];
   
@@ -35,6 +35,7 @@
             addVotes = {addVotes}
             playerId = {playerId}
             voteStatus = {voteStatus}
+            startVoting = {startVoting}
           />
         );
       }

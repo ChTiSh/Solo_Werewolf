@@ -11,7 +11,7 @@
 
 import React, { Component } from 'react';
 import MainContainer from './containers/MainContainer.jsx';
-import styles from '../css/styles.css'
+import '../css/styles.css'
 
 class App extends Component {
   constructor(props) {

@@ -1,3 +1,56 @@
-.gameNav {
+body{
+    font-family: 'Special Elite', cursive;
+}
+h1{
+    text-align: center;
+    padding-top: 10px;
+}
+button {
+    font-family: 'Special Elite', cursive;
+    padding: 5px;
+    border-radius: 5px;
+    width: 120px;
+    margin: 2px;
+}
+input {
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px dotted gray;
+}
+
+.innerbox {
+    display: inline;
+    text-align: center;
+}
+
+.displayBox{
     display: flex;
+    flex-flow: row wrap;
+    border-radius: 5px;
+    padding: 20px;
+    gap: 20px 20px;
+    width: 1200px;
+    height: 200px;
+    position: relative;
+    align-items: center;
+    margin-left: 10%;
+
+}
+.playerBox {
+    background-color: lightslategray;
+    color: white;
+    flex: 0 1 12%;
+    padding: 40px 20px 60px;
+    margin: 4px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+}
+
+.playerBox button{
+    background-color: white;
+    font-weight: 800;
+    text-transform: capitalize;
+    padding-top: 5px;
 }
