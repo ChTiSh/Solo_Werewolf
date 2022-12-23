@@ -54,3 +54,9 @@ input {
     text-transform: capitalize;
     padding-top: 5px;
 }
+.identity{
+    color: lightslategray;
+}
+.nightPrompts{
+    color:white;
+}

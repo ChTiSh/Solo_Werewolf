@@ -33,6 +33,8 @@
       voteStatus: state.game.voteStatus,
       gameId:state.game.gameId,
       playerId:state.game.playerId,
+      lastPlayerAttacked: state.game.lastPlayerAttacked,
+
     };
   };
 
@@ -45,11 +47,14 @@
     addVotes:(playerId)=> {
       dispatch(actions.addVotesActionCreator(playerId))
     },
-    startGame:(gameStatus) => {
-      dispatch(actions.startGameActionCreator(gameStatus))
-    },
     startVoting:(voteStatus)=> {
       dispatch(actions.startVotingActionCreator(voteStatus));
+    },
+    changeStatus:(gameStatus)=>{
+      dispatch(actions.changeStatusActionCreator(gameStatus));
+    },
+    attackedPlayer:(playerId)=>{
+      dispatch(actions.attackedPlayerActionCreator(playerId));
     }
  });
 
@@ -70,10 +75,12 @@
                     totalVotes={this.props.totalVotes}
                     totalPlayer={this.props.totalPlayer}
                     playerIdentity={this.props.playerIdentity}
-                    startGame={this.props.startGame}
+                    changeStatus={this.props.changeStatus}
                     voteStatus={this.props.voteStatus}
                     startVoting={this.props.startVoting}
                     gameId={this.props.gameId}
+                    attackedPlayer={this.props.attackedPlayer}
+                    lastPlayerAttacked={this.props.lastPlayerAttacked}
             />
 
             <StartGame gameStatus={this.props.gameStatus}
@@ -82,8 +89,11 @@
                     playerIdentity={this.props.playerIdentity}
                     playerList={this.props.playerList}
                     playerId={this.props.playerId}
-                    startGame={this.props.startGame}
+                    changeStatus={this.props.changeStatus}
                     voteStatus={this.props.voteStatus}
+                    startVoting={this.props.startVoting}
+                    attackedPlayer={this.props.attackedPlayer}
+                    lastPlayerAttacked={this.props.lastPlayerAttacked}
             />
 
             <StartVoting playerList={this.props.playerList}
@@ -94,8 +104,9 @@
                           voteStatus={this.props.voteStatus}
                           playerId={this.props.playerId}
                           startVoting={this.props.startVoting}
-                          
-
+                          changeStatus={this.props.changeStatus}
+                          attackedPlayer={this.props.attackedPlayer}
+                          lastPlayerAttacked={this.props.lastPlayerAttacked}
             />
             <PlayersDisplay playerList={this.props.playerList}
                             newName={this.props.newName}
@@ -107,6 +118,11 @@
                             gameStatus={this.props.gameStatus}
                             voteStatus={this.props.voteStatus}
                             startVoting={this.props.startVoting}
+                            gameId={this.props.gameId}
+                            gameRounds={this.props.gameRounds}
+                            changeStatus={this.props.changeStatus}
+                            attackedPlayer={this.props.attackedPlayer}
+                            lastPlayerAttacked={this.props.lastPlayerAttacked}
 
             />
  

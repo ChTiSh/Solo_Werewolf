@@ -6,12 +6,12 @@ const router = express.Router();
 
 
 router.get('/votes',
-  //userController.getVotes,
-  (req, res) => res.status(200).json(res.locals.getVotes)
+  userController.getVotes,
+  (req, res) => res.status(200).json(res.locals.votes[0].voted_player_id)
 );
 
 router.post('/votes',
-  //userController.addVotes,
+  userController.addVotes,
   (req, res) => res.status(200).json(res.locals.addVotes)
 );
 

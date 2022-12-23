@@ -86,9 +86,8 @@ const PlayerCreator = props => {
     // to generate the session id/cookie to identify each player
     const handleClick = (e) => {
         e.preventDefault();
-        console.log('playerId 1:',playerId);
         props.addPlayer(document.getElementById('name').value);
-        createPlayer(playerId);
+        createPlayer();
         document.getElementById('name').value = '';
         setDisable(true)
         enoughPlayer();

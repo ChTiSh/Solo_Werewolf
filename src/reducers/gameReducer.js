@@ -30,6 +30,7 @@ const initialState = {
     voteStatus: true,
     playerIdentityList:['wolf','wolf','wolf','villager', 'villager', 'villager','villager','doctor','seer','hunter'],
     playerIdentity:'',
+    lastPlayerAttacked: 0,
 }
 
 const gameReducer = (state = initialState, action) => {
@@ -84,26 +85,26 @@ const gameReducer = (state = initialState, action) => {
                 totalHumans.push(newPlayer);
             }
 
-            const body = {
-                player_id: 0,
-                name: document.getElementById('name').value, 
-                cookie_id: 'testingwithname',
-                life_status: "live",
-                game_id: 10000,
-            }
-            //fetch post cookie data into database
+            // const body = {
+            //     player_id: 0,
+            //     name: document.getElementById('name').value, 
+            //     cookie_id: 'testingwithname',
+            //     life_status: "live",
+            //     game_id: 10000,
+            // }
+            // //fetch post cookie data into database
            
-            fetch('http://localhost:3000/api/player', {
-                method: 'POST',
-                mode:'no-cors',
-                headers: {'Content-Type': 'Application/JSON'},
-                body: JSON.stringify(body),
-            })
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(err => console.log('Addplayer fetch /: ERROR: ', err));
+            // fetch('http://localhost:3000/api/player', {
+            //     method: 'POST',
+            //     //mode:'no-cors',
+            //     headers: {'Content-Type': 'Application/JSON'},
+            //     body: JSON.stringify(body),
+            // })
+            // .then(res => res.json())
+            // .then((data) => {
+            //     console.log(data);
+            // })
+            // .catch(err => console.log('Addplayer fetch /: ERROR: ', err));
 
             return {
                 ...state,
@@ -130,31 +131,30 @@ const gameReducer = (state = initialState, action) => {
             };
         }
 
-        case types.START_GAME: {
-            let gameStatus = action.payload;
-            console.log("gameStatus", gameStatus);
-            return {
-                ...state,
-                gameStatus
-            }
-        }
+    
 
         case types.START_VOTING: {
             let voteStatus = action.payload;
-            console.log("gameStatus", voteStatus);
+            console.log("voteStatus", voteStatus);
             return {
                 ...state,
                 voteStatus
             }
         }
 
-        case types.DELETE_PLAYER:{
-            let totalPlayers = state.totalPlayers;
-
+        case types.CHANGE_STATUS:{
+            let gameStatus = action.payload;
+            console.log('gameStatus changed to', gameStatus)
             return {
                 ...state,
-                playerList,
-                totalPlayers,
+                gameStatus
+            }
+        }
+        case types.ATTACKED_PLAYER:{
+            let lastPlayerAttacked = action.payload;
+            return {
+                ...state,
+                lastPlayerAttacked
             };
         }
         default: {

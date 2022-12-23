@@ -19,8 +19,8 @@ export const addPlayerActionCreator = playerName => ({
 });
 
 
-export const deletePlayerActionCreator = playerId => ({
-  type: types.DELETE_PLAYER,
+export const attackedPlayerActionCreator = playerId => ({
+  type: types.ATTACKED_PLAYER,
   payload: playerId,
 });
 
@@ -37,4 +37,9 @@ export const startGameActionCreator = gameStatus => ({
 export const startVotingActionCreator = voteStatus => ({
   type: types.START_VOTING,
   payload: voteStatus,
+});
+
+export const changeStatusActionCreator = gameStatus => ({
+  type: types.CHANGE_STATUS,
+  payload: gameStatus,
 });
