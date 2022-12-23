@@ -46,6 +46,9 @@
         super(props);
     }
 
+    
+
+    //  A Guide on How to Play
     render(){
         return(
             <div className='container'>

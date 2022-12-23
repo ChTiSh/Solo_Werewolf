@@ -86,7 +86,7 @@ import { useStore } from 'react-redux';
         //disable the button after voting
         if(props.totalVotes === 3 && props.gameStatus === 'start'){
             props.startVoting(true);
-        }
+        }np
         console.log('prop.gamestatus after each click', props.gameStatus);
         console.log(props.totalVotes)
         

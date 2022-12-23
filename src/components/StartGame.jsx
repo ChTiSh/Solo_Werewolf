@@ -80,8 +80,8 @@ const StartGame = props => {
             }
             document.body.style.background = backgroundColor;
             // let body = document.getElementsByTagName('body')[0];
-            // body.style.backgroundImage = `url(${background})` ;
-            // document.body.style.backgroundImage = "url(../assets/background.jpg)";
+            // body.style.backgroundImage = 'url(/background.jpg)';
+
         }
         //if wolves finished voting
         if(props.gameStatus === 'seer'){
